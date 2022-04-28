@@ -1,0 +1,102 @@
+﻿<Window x:Class="Album.PhotoWindow.Dziecinstwo.PierwszeKroki"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Album.PhotoWindow.Dziecinstwo"
+        mc:Ignorable="d"
+        Closing ="OnClosing"
+        Title="Pierwsze Kroki" Height="800" Width="1200" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="Button" >
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Foreground" Value=" White"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="70"/>
+
+            <Setter Property="Margin" Value="10,10,10,10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="20" 
+                                BorderThickness="5"
+                                BorderBrush="White">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property ="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                         ShadowDepth="5"
+                             Direction="330"
+                            Color="Black"
+                            Opacity="0.5"
+                            BlurRadius="40"/>
+                </Setter.Value>
+            </Setter>
+
+
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value=" True">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Opacity" Value="0.4"/>
+                    <Setter Property="Foreground" Value="#f083da"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+
+
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush>
+                <GradientStop Color="#7be9f6" Offset="0.0"/>
+                <GradientStop Color="#f083da" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width ="*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Column="1" Grid.RowSpan="3">
+            <ItemsControl Name="ImageList" ItemsSource="{Binding ImageList}" Margin="0,10,0,10" >
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="10,0,0,10">
+                            <Image Source="{Binding Path}" Width="250" Height="250" Stretch="Uniform"/>
+                            <TextBox Name="ImageName" Margin="1" Foreground="#FF787878" Text="{Binding FileName}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </ScrollViewer>
+        <Button Content ="Pokaż/" Grid.Row="0" Width="120" Height="50" Margin="10,100,10,10" Click="Button_Click"/>
+
+        <Button Content="Dodaj" Grid.Row="1" Width="120" Height="50" Margin="10,100,10,10" Click="Button_Click_1"/>
+    </Grid>
+</Window>

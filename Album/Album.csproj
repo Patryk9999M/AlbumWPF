@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Images\**" />
+    <EmbeddedResource Remove="Images\**" />
+    <None Remove="Images\**" />
+    <Page Remove="Images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Narodziny.cs" />
+    <Compile Remove="PhotoWindow\Rozne\Rozne.xaml.cs" />
+    <Compile Remove="PhotoWindow\Rozne\Window1.xaml.cs" />
+    <Compile Remove="Window1.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="PhotoWindow\Rozne\Rozne.xaml" />
+    <Page Remove="PhotoWindow\Rozne\Window1.xaml" />
+    <Page Remove="Window1.xaml" />
+  </ItemGroup>
+
+</Project>
